@@ -1,0 +1,46 @@
+.Messages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding: 15px 0;
+  li {
+    margin: 0 0 15px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    img {
+      max-width: 64px;
+      padding: 10px;
+      background-color: #caf0f8;
+      border-radius: 10px;
+    }
+    .Meta {
+      border-radius: 10px;
+      background-color: #48cae4;
+      flex-grow: 1;
+      margin-left: 15px;
+      padding: 5px 10px;
+      position: relative;
+      &::before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #48cae4;
+        position: absolute;
+        left: -8px;
+        top: 12px;
+        z-index: 0;
+      }
+      strong {
+        color: #03045e;
+        font-weight: 600;
+        text-shadow: 0 0 1px #03045e;
+      }
+      p {
+      }
+    }
+  }
+}

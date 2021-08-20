@@ -5,7 +5,19 @@ class App extends Component {
   state = {
     DarkMode: true,
     Name: "",
-    Image: ""
+    Image: "",
+    Messages: [
+      {
+        Name: "Dev Guy",
+        Image: "https://i.imgur.com/MQeVKtB.png",
+        Text: "Hey guys!"
+      },
+      {
+        Name: "Dev Girl",
+        Image: "https://i.imgur.com/XWVoP5E.png",
+        Text: "Hey girls!"
+      }
+    ]
   };
   render() {
     const { DarkMode, Name, Image } = this.state;

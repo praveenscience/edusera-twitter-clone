@@ -46,5 +46,20 @@
         margin: 5px 0;
       }
     }
+    &.me {
+      .avatar {
+        order: 2;
+      }
+      .Meta {
+        margin-left: 0;
+        margin-right: 15px;
+        &::before {
+          border-left: 10px solid #48cae4;
+          border-right: none;
+          left: auto;
+          right: -8px;
+        }
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Bootstrap/Header";
+import MessagesList from "./Messages";
 
 class App extends Component {
   state = {
@@ -20,7 +21,7 @@ class App extends Component {
     ]
   };
   render() {
-    const { DarkMode, Name, Image } = this.state;
+    const { DarkMode, Name, Image, Messages } = this.state;
     return (
       <div className="App">
         <Header dark={DarkMode} containerClassName="justify-content-center">
@@ -28,6 +29,7 @@ class App extends Component {
         </Header>
         <div className="container">
           <div className="col-12 col-md-6 offset-md-3">
+            <MessagesList Messages={Messages} />
             {Name.trim().length > 0 && Image.trim().length > 0
               ? "Show Compose"
               : "Ask for Name & Image."}

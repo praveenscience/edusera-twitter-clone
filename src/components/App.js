@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import Header from "./Bootstrap/Header";
 
 class App extends Component {
+  state = {
+    DarkMode: true
+  };
   render() {
     return (
       <div className="App">
-        <h1>Twitter UI Clone</h1>
+        <Header dark={this.state.DarkMode}>GitTweet</Header>
       </div>
     );
   }

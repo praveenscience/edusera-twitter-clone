@@ -3,17 +3,24 @@ import Header from "./Bootstrap/Header";
 
 class App extends Component {
   state = {
-    DarkMode: true
+    DarkMode: true,
+    Name: "",
+    Image: ""
   };
   render() {
+    const { DarkMode, Name, Image } = this.state;
     return (
       <div className="App">
-        <Header
-          dark={this.state.DarkMode}
-          containerClassName="justify-content-center"
-        >
+        <Header dark={DarkMode} containerClassName="justify-content-center">
           GitTweet
         </Header>
+        <div className="container">
+          <div className="col-12 col-md-6 offset-md-3">
+            {Name.trim().length > 0 && Image.trim().length > 0
+              ? "Show Compose"
+              : "Ask for Name & Image."}
+          </div>
+        </div>
       </div>
     );
   }

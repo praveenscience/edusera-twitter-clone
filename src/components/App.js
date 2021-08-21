@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { GetMessage } from "../services/MessageService";
+import { GetMessage, SendMessage } from "../services/MessageService";
 import Header from "./Bootstrap/Header";
 import Compose from "./Compose";
 import Login from "./Login";
@@ -28,8 +28,8 @@ class App extends Component {
   }
   handleMessage = Text => {
     const { Name, Image } = this.state;
-    this.setState({
-      Messages: [...this.state.Messages, { Name, Image, Text }]
+    SendMessage(Name, Image, Text).then(() => {
+      GetMessage().then(res => this.setState({ Messages: res.data }));
     });
   };
   render() {

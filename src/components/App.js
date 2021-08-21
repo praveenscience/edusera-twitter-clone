@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Bootstrap/Header";
+import Compose from "./Compose";
 import Login from "./Login";
 import MessagesList from "./Messages";
 
@@ -11,19 +12,9 @@ class App extends Component {
     Image: "",
     Messages: [
       {
-        Name: "Dev Guy",
-        Image: "https://i.imgur.com/MQeVKtB.png",
-        Text: "Hey guys!"
-      },
-      {
-        Name: "Dev Girl",
+        Name: "GitTweet",
         Image: "https://i.imgur.com/XWVoP5E.png",
-        Text: "Hey girls!"
-      },
-      {
-        Name: "Praveen",
-        Image: "https://i.imgur.com/wbUfjzd.png",
-        Text: "Hey guys and girls!"
+        Text: "Hey All! Welcome to the DevChat. Let's start chatting!"
       }
     ]
   };
@@ -32,6 +23,12 @@ class App extends Component {
       Name,
       Image,
       LoggedIn: true
+    });
+  };
+  handleMessage = Text => {
+    const { Name, Image } = this.state;
+    this.setState({
+      Messages: [...this.state.Messages, { Name, Image, Text }]
     });
   };
   render() {
@@ -45,7 +42,7 @@ class App extends Component {
           <div className="col-12 col-md-6 offset-md-3">
             <MessagesList Messages={Messages} Name={Name} />
             {LoggedIn && Name.trim().length > 0 && Image.trim().length > 0 ? (
-              "Show Compose"
+              <Compose sendMessage={this.handleMessage} />
             ) : (
               <Login handleSignIn={this.handleSignIn} />
             )}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { GetMessage } from "../services/MessageService";
 import Header from "./Bootstrap/Header";
 import Compose from "./Compose";
 import Login from "./Login";
@@ -10,13 +11,7 @@ class App extends Component {
     LoggedIn: false,
     Name: "",
     Image: "",
-    Messages: [
-      {
-        Name: "GitTweet",
-        Image: "https://i.imgur.com/XWVoP5E.png",
-        Text: "Hey All! Welcome to the DevChat. Let's start chatting!"
-      }
-    ]
+    Messages: []
   };
   handleSignIn = (Name, Image) => {
     this.setState({
@@ -25,6 +20,12 @@ class App extends Component {
       LoggedIn: true
     });
   };
+  componentDidMount() {
+    GetMessage().then(res => this.setState({ Messages: res.data }));
+    setInterval(() => {
+      GetMessage().then(res => this.setState({ Messages: res.data }));
+    }, 1000);
+  }
   handleMessage = Text => {
     const { Name, Image } = this.state;
     this.setState({

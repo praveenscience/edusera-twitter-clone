@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Bootstrap/Header";
+import Login from "./Login";
 import MessagesList from "./Messages";
 
 class App extends Component {
@@ -26,6 +27,13 @@ class App extends Component {
       }
     ]
   };
+  handleSignIn = (Name, Image) => {
+    this.setState({
+      Name,
+      Image,
+      LoggedIn: true
+    });
+  };
   render() {
     const { DarkMode, Name, Image, Messages, LoggedIn } = this.state;
     return (
@@ -36,9 +44,11 @@ class App extends Component {
         <div className="container">
           <div className="col-12 col-md-6 offset-md-3">
             <MessagesList Messages={Messages} Name={Name} />
-            {LoggedIn && Name.trim().length > 0 && Image.trim().length > 0
-              ? "Show Compose"
-              : "Ask for Name & Image."}
+            {LoggedIn && Name.trim().length > 0 && Image.trim().length > 0 ? (
+              "Show Compose"
+            ) : (
+              <Login handleSignIn={this.handleSignIn} />
+            )}
           </div>
         </div>
       </div>

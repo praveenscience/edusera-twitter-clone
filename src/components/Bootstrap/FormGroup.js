@@ -25,6 +25,7 @@ const FormGroup = ({
         onChange={onChange}
         value={Value}
         defaultValue={defaultValue}
+        placeholder={"Please enter " + Label}
         checked={Checked}
         defaultChecked={defaultChecked}
         aria-describedby={Id + "Help"}
